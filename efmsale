@@ -1,0 +1,65 @@
+<?php
+
+// qst1
+function calculSomme(int $x, int $y): int {
+    return $x + $y;
+}
+
+// qst2
+function afficherDecision(float $note) {
+    if ($note >= 10) {
+        echo "Réussite";
+    } else {
+        echo "Échec";
+    }
+}
+
+// qst3
+$villes = ['Rabat', 'Casablanca', 'Tanger'];
+echo "<ul>";
+foreach ($villes as $ville) {
+    echo "<li>$ville</li>";
+}
+echo "</ul>";
+
+// qst4
+function amountAllowances(int $numberOfChild): int {
+    if ($numberOfChild == 1) {
+        return 300;
+    } elseif ($numberOfChild == 2) {
+        return 500;
+    } else {
+        return 600;
+    }
+}
+
+// qst5
+$conn = mysqli_connect("localhost", "root", "", "ISTA");
+
+$login = $_POST['login'];
+$password = $_POST['password'];
+
+$sql = "SELECT * FROM users WHERE login='$login' AND password='$password'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "Authentification réussie.";
+} else {
+    echo "Échec de l'authentification.";
+}
+
+mysqli_close($conn);
+
+// qst6
+$conn = mysqli_connect("localhost", "root", "", "ISTA");
+
+$sql = "SELECT nom FROM users";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo $row['nom'] . "<br>";
+}
+
+mysqli_close($conn);
+
+?>
